@@ -18,5 +18,15 @@ namespace Project2
         {
             Response.Redirect("NewCoursePage.aspx");
         }
+
+        protected void btnNewStudent_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewStudentPage.aspx");
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("BillingPage.aspx");
+        }
     }
 }

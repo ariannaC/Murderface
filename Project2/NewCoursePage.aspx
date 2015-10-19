@@ -6,8 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body></>
-    <form id="form1" runat="server">
+<body>&nbsp;<form id="form1" runat="server">
     <h1 style="text-align:center; color:darkgoldenrod; font-weight:bold"> Add a New Course to the System </h1>
         <div>
          CRN   <asp:TextBox ID="txtCRN" runat="server"></asp:TextBox>

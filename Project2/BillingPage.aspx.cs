@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using Utilities;
 
 namespace Project2
 {
@@ -11,7 +13,12 @@ namespace Project2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string query = "SELECT * FROM Student";
+            DBConnect db = new DBConnect();
+            ddStudentSelect.DataSource = db.GetDataSet(query);
+            ddStudentSelect.DataValueField = "StudentID";
+            ddStudentSelect.DataTextField = "Name";
+            ddStudentSelect.DataBind();
         }
     }
 }
