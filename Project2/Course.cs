@@ -124,5 +124,24 @@ namespace Project2
             DB.DoUpdateUsingCmdObj(command);
         }
 
+        public int DecrementSeats()
+        {
+            if(numSeats >0 )
+            {
+                numSeats--;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Decrement";
+            command.Parameters.AddWithValue("@CRN", crn);
+            command.Parameters.AddWithValue("@NumSeats", numSeats);
+            DBConnect DB = new DBConnect();
+            DB.DoUpdateUsingCmdObj(command);
+            return 1;
+            }
+
+            return -1;
+        }
+
+
     }
 }

@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C8BDF9F1-E8ED-4787-BC4D-E89C97700523}</ProjectGuid>
+    <ProjectGuid>{C65A64EF-44A3-443E-B1AC-693FD617B88A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project2</RootNamespace>
-    <AssemblyName>Project2</AssemblyName>
+    <RootNamespace>Project3WS</RootNamespace>
+    <AssemblyName>Project3WS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -57,55 +57,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BillingPage.aspx" />
-    <Content Include="HomePage.aspx" />
-    <Content Include="NewCoursePage.aspx" />
-    <Content Include="NewStudentPage.aspx" />
-    <Content Include="SearchPage.aspx" />
+    <Content Include="TheWebService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillingPage.aspx.cs">
-      <DependentUpon>BillingPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BillingPage.aspx.designer.cs">
-      <DependentUpon>BillingPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Course.cs" />
-    <Compile Include="HomePage.aspx.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HomePage.aspx.designer.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewCoursePage.aspx.cs">
-      <DependentUpon>NewCoursePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewCoursePage.aspx.designer.cs">
-      <DependentUpon>NewCoursePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewStudentPage.aspx.cs">
-      <DependentUpon>NewStudentPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewStudentPage.aspx.designer.cs">
-      <DependentUpon>NewStudentPage.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="CreditCardClass.cs" />
+    <Compile Include="CustomerClass.cs" />
+    <Compile Include="ErrorCodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchPage.aspx.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="TheWebService.asmx.cs">
+      <DependentUpon>TheWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SearchPage.aspx.designer.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Student.cs" />
+    <Compile Include="TransactionClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\Project2Arianna.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -118,9 +84,6 @@
       <Project>{c8eb3e08-b41f-49dd-b4a5-757c938fe36b}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -137,7 +100,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64900/</IISUrl>
+          <IISUrl>http://localhost:17486/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C8BDF9F1-E8ED-4787-BC4D-E89C97700523}</ProjectGuid>
+    <ProjectGuid>{B3F7E19D-5794-4ECC-BBDF-A99016B3BCDE}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project2</RootNamespace>
-    <AssemblyName>Project2</AssemblyName>
+    <RootNamespace>Project3</RootNamespace>
+    <AssemblyName>Project3</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -57,22 +57,28 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BillingPage.aspx" />
+    <Content Include="AccountsPage.aspx" />
     <Content Include="HomePage.aspx" />
-    <Content Include="NewCoursePage.aspx" />
-    <Content Include="NewStudentPage.aspx" />
-    <Content Include="SearchPage.aspx" />
+    <Content Include="TransactionsPage.aspx" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\CreditCardServiceRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CreditCardServiceRef\TheWebService.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillingPage.aspx.cs">
-      <DependentUpon>BillingPage.aspx</DependentUpon>
+    <Compile Include="AccountsPage.aspx.cs">
+      <DependentUpon>AccountsPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BillingPage.aspx.designer.cs">
-      <DependentUpon>BillingPage.aspx</DependentUpon>
+    <Compile Include="AccountsPage.aspx.designer.cs">
+      <DependentUpon>AccountsPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Course.cs" />
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -80,32 +86,27 @@
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NewCoursePage.aspx.cs">
-      <DependentUpon>NewCoursePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewCoursePage.aspx.designer.cs">
-      <DependentUpon>NewCoursePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewStudentPage.aspx.cs">
-      <DependentUpon>NewStudentPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewStudentPage.aspx.designer.cs">
-      <DependentUpon>NewStudentPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchPage.aspx.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionsPage.aspx.cs">
+      <DependentUpon>TransactionsPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SearchPage.aspx.designer.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
+    <Compile Include="TransactionsPage.aspx.designer.cs">
+      <DependentUpon>TransactionsPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Student.cs" />
+    <Compile Include="Web References\CreditCardServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\Project2Arianna.pubxml" />
+    <None Include="Web References\CreditCardServiceRef\TheWebService.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -114,13 +115,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{c8eb3e08-b41f-49dd-b4a5-757c938fe36b}</Project>
-      <Name>Utilities</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:17486/TheWebService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CreditCardServiceRef\</RelPath>
+      <UpdateFromURL>http://localhost:17486/TheWebService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Project3_CreditCardServiceRef_TheWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -137,7 +148,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64900/</IISUrl>
+          <IISUrl>http://localhost:12920/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

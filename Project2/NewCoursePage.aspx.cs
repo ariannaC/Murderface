@@ -28,7 +28,30 @@ namespace Project2
                 ddDepartment.DataBind();
             }
         }
-        
+
+        public bool inpputVal()
+        {
+            if (txtCRN.Text == "" || txtMaxSeats.Text == "" || txtProfessor.Text == "" || txtSectionNum.Text == "" || txtTitle.Text == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please fill in all fields to submit a new course');</script>");
+                return false;
+            }
+
+            try
+            {
+                int.Parse(txtCRN.Text);
+                int.Parse(txtMaxSeats.Text);
+                int.Parse(txtSectionNum.Text);
+                return true;
+            }
+            catch
+            {
+                
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please enter valid fields for CRN, Maximum seats available, and the seciton number of the course you are trying to add.');</script>");
+                return false;
+            }
+           
+        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -37,9 +60,21 @@ namespace Project2
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (inpputVal() == false)
+            {
+                return;
+            }
+           
+            string clear = "";
             Course course = new Course(int.Parse(txtCRN.Text), txtTitle.Text, int.Parse(ddDepartment.SelectedValue), ddSemester.SelectedValue, txtSectionNum.Text, txtProfessor.Text, ddTimeCode.SelectedValue, ddDayCode.SelectedValue, int.Parse(ddCreditHours.SelectedValue), int.Parse(txtMaxSeats.Text));
-            course.SaveCourse();     
-                     
+            course.SaveCourse();
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Your course has been added successfully:)');</script>");
+            txtCRN.Text = clear;
+            txtMaxSeats.Text = clear;
+            txtProfessor.Text = clear;
+            txtSectionNum.Text = clear;
+            txtTitle.Text = clear;
+            //  Response.Redirect("NewCoursePage.aspx");
         }
     }
 }

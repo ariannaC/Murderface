@@ -6,10 +6,10 @@
 <head runat="server">
     <title></title>
 </head>
-<body>&nbsp;<form id="form1" runat="server">
-    <h1 style="text-align:center; color:darkgoldenrod; font-weight:bold"> Add a New Course to the System </h1>
-        <div>
-         CRN   <asp:TextBox ID="txtCRN" runat="server"></asp:TextBox>
+<body style="background-image:url(Images/Flowers-Wallpaper-07.jpg); background-size:cover; background-repeat:no-repeat"><form id="form1" runat="server">
+    <h1 style="text-align:center; color:black; font-weight:bold"> Add a New Course to the System </h1>
+        <div style="color:black; font-weight:bold">
+      CRN   <asp:TextBox ID="txtCRN" runat="server"></asp:TextBox>
             <br />
             <br />
            Title <asp:TextBox Style="border-bottom-color:darkred" ID="txtTitle" runat="server"></asp:TextBox>
