@@ -20,7 +20,12 @@ namespace Project3WS
     // [System.Web.Script.Services.ScriptService]
     public class TheWebService : System.Web.Services.WebService
     {
-       
+        //SQL RETURN VALUES FOR VERIFICATION:
+        //1 = Success
+        //2 = Credit card does not exist in database
+        //3 = transaciton ammount exceeds credit limit
+        //4 = incorrect CVV code 
+        //5 = Incorrect first name for card 
 
         //dear pouya i liked the name of this method so i kept it. anyway it adds a new customer and new credit card to db
         [WebMethod]
@@ -37,16 +42,18 @@ namespace Project3WS
             command.Parameters.AddWithValue("@AccountBalance", cc.AccountBalance);
             command.Parameters.AddWithValue("@FirstName", arthur.Firstname);
             command.Parameters.AddWithValue("@LastName", arthur.LastName);
-           
-           return (DB.DoUpdateUsingCmdObj(command)>0)? true: false;
+
+            return (DB.DoUpdateUsingCmdObj(command) > 0) ? true : false;
 
         }
 
         [WebMethod]
-        public bool UpdateCustomer(CustomerClass fred, CreditCardClass cc)
+        public string[] UpdateCustomer(CustomerClass fred, CreditCardClass cc, object[] stupid)
         {
             DBConnect DB = new DBConnect();
             SqlCommand command = new SqlCommand();
+            string[] meh = new string[3];
+            ErrorCodes ec = new ErrorCodes();
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "CustomerUpdate";
             command.Parameters.AddWithValue("@FirstName", fred.Firstname);
@@ -55,8 +62,18 @@ namespace Project3WS
             command.Parameters.AddWithValue("@State", fred.State);
             command.Parameters.AddWithValue("@ZipCode", fred.ZipCode);
             command.Parameters.AddWithValue("@AccountBalance", cc.AccountBalance);
-
-            return (DB.DoUpdateUsingCmdObj(command) > 0) ? true : false;
+            meh[0] = (DB.DoUpdateUsingCmdObj(command) > 0) ? "true" : "false";
+            SqlCommand sandy = new SqlCommand();
+            sandy.CommandType = CommandType.StoredProcedure;
+            sandy.CommandText = "VerifyInfo";
+            command.Parameters.AddWithValue("@CreditCardNum", cc.CardNumber);
+            command.Parameters.AddWithValue("@CVV", cc.CVV);
+            command.Parameters.AddWithValue("@TransAmnt", stupid[3]);
+            command.Parameters.AddWithValue("@FirstName", fred.Firstname);
+            DataSet ds = DB.GetDataSetUsingCmdObj(sandy);
+            meh[1] = ds.Tables[0].Rows[0]["Return Value"].ToString();
+            meh[2] = ec.GetErrorCodeMessage(int.Parse(meh[1]));
+            return meh;
         }
 
         [WebMethod]
@@ -70,7 +87,7 @@ namespace Project3WS
             DataSet ds = DB.GetDataSetUsingCmdObj(command);
 
             return float.Parse(ds.Tables[0].Rows[0]["CreditLimit"].ToString());
-            
+
         }
     }
 }

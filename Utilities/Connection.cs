@@ -11,9 +11,9 @@ namespace Utilities
     public class DBConnect
     {
         // Database connection string for within Temple's campus.
-        String SqlConnectString = "server=cis-mssql1.temple.edu;Database=fa15_3342_tue69402;User id=tue69402;Password=Fuckthis69";
+        //String SqlConnectString = "server=cis-mssql1.temple.edu;Database=fa15_3342_tue69402;User id=tue69402;Password=Fuckthis69";
         // Database connection string for tunnelling from outside Temple's campus.
-       // String SqlConnectString = "server=127.0.0.1,5555;Database=fa14_3342_tue69402;User id=tue69402;Password=Cail2Foh";
+        String SqlConnectString = "server=127.0.0.1,5555;Database=fa14_3342_tue69402;User id=tue69402;Password=Fuckthis69";
         SqlConnection myConnectionSql;
         SqlCommand objCmd;
         SqlDataReader objDataReader;

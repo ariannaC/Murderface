@@ -7,15 +7,22 @@ namespace Project3WS
 {
     public class ErrorCodes
     {
-        public Dictionary<string, int> errorCodes;
+        public Dictionary<int, string> errorCodes;
 
         public ErrorCodes()
         {
-            errorCodes = new Dictionary<string, int>();
-            errorCodes.Add("Transaction amount exceeds credit limit", 01);
-            errorCodes.Add("Invalid Card Number", 02);
-            errorCodes.Add("Invalid CVV code", 03);
+            errorCodes = new Dictionary<int, string>();
+            errorCodes.Add(1,"Success");
+            errorCodes.Add(3, "Transaction amount exceeds credit limit");
+            errorCodes.Add(2,"Invalid Card Number");
+            errorCodes.Add(4,"Invalid CVV code");
+            errorCodes.Add(5, "Name does not match card");
+            
+        }
 
+        public string GetErrorCodeMessage(int code)
+        {
+            return errorCodes[code];
         }
     }
 }

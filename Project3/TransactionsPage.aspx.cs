@@ -16,6 +16,7 @@ namespace Project3
 
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
+            object[] stupid = new object[10];
             CreditCardServiceRef.TheWebService pxy = new CreditCardServiceRef.TheWebService();
             CreditCardServiceRef.CreditCardClass creditCard = new CreditCardServiceRef.CreditCardClass();
             CreditCardServiceRef.CustomerClass fred = new CreditCardServiceRef.CustomerClass();
@@ -27,7 +28,14 @@ namespace Project3
             fred.ZipCode = TxtZip.Text;
             creditCard.CreditLimit = pxy.GetCreditLimit(fred.Firstname);
             creditCard.AccountBalance = creditCard.CreditLimit - float.Parse(TxtTransAmnt.Text);
-            pxy.UpdateCustomer(fred, creditCard);
+            creditCard.CardNumber = float.Parse(txtCCNum.Text);
+            creditCard.CVV = int.Parse(txtCVV.Text);
+            stupid[0] = creditCard.CardNumber;
+            stupid[1] = creditCard.CVV;
+            stupid[2] = float.Parse(TxtTransAmnt.Text);
+            stupid[3] = fred.Firstname;
+          txtErrors.Text =  pxy.UpdateCustomer(fred, creditCard, stupid).ToString();
+
         }
 
         protected void btnHome_Click(object sender, EventArgs e)

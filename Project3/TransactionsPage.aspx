@@ -26,6 +26,10 @@
           <asp:Button ID="btnHome" runat="server" OnClick="btnHome_Click" Text="Home" />
           <asp:Button ID="btnProcessTransaction" runat="server" Text="Process Transaction" OnClick="btnAddNew_Click" />
         <asp:Button ID="btnViewInfo" runat="server" Text="View Information" />
+        <div> 
+          <asp:Label runat="server" ID="txtErrors"></asp:Label>
+        </div>
     </form>
+ 
 </body>
 </html>
