@@ -11,7 +11,7 @@ namespace Project3WS
         public int CCID;
         public int CustomerID;
         public int CVV;
-        public float CardNumber;
+        public int CardNumber;
         public float AccountNumber;
         public float CreditLimit;
         public float AccountBalance;

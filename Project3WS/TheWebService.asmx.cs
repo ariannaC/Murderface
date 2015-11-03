@@ -66,28 +66,42 @@ namespace Project3WS
             SqlCommand sandy = new SqlCommand();
             sandy.CommandType = CommandType.StoredProcedure;
             sandy.CommandText = "VerifyInfo";
-            command.Parameters.AddWithValue("@CreditCardNum", cc.CardNumber);
-            command.Parameters.AddWithValue("@CVV", cc.CVV);
-            command.Parameters.AddWithValue("@TransAmnt", stupid[3]);
-            command.Parameters.AddWithValue("@FirstName", fred.Firstname);
-            DataSet ds = DB.GetDataSetUsingCmdObj(sandy);
-            meh[1] = ds.Tables[0].Rows[0]["Return Value"].ToString();
+            sandy.Parameters.AddWithValue("@CreditCardNum", cc.CardNumber);
+            sandy.Parameters.AddWithValue("@CVV", cc.CVV);
+            sandy.Parameters.AddWithValue("@TransAmnt", float.Parse(stupid[2].ToString()));
+            sandy.Parameters.AddWithValue("@FirstName", fred.Firstname);
+            SqlParameter returnParam = new SqlParameter("@RVAL", DbType.Int32);
+            returnParam.Direction = ParameterDirection.ReturnValue;
+            sandy.Parameters.Add(returnParam);
+
+//            DataSet ds = DB.GetDataSetUsingCmdObj(sandy);
+            DB.GetDataSetUsingCmdObj(sandy);         
+            meh[1] = sandy.Parameters["@RVAL"].Value.ToString();
             meh[2] = ec.GetErrorCodeMessage(int.Parse(meh[1]));
+            
+            
             return meh;
         }
 
         [WebMethod]
         public float GetCreditLimit(string fName)
         {
-            DBConnect DB = new DBConnect();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "GetCreditLimit";
-            command.Parameters.AddWithValue("@FirstName", fName);
-            DataSet ds = DB.GetDataSetUsingCmdObj(command);
+            try
+            {
+                DBConnect DB = new DBConnect();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "GetCreditLimit";
+                command.Parameters.AddWithValue("@FirstName", fName);
+                DataSet ds = DB.GetDataSetUsingCmdObj(command);
 
-            return float.Parse(ds.Tables[0].Rows[0]["CreditLimit"].ToString());
+                return float.Parse(ds.Tables[0].Rows[0]["CreditLimit"].ToString());
+            }
 
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

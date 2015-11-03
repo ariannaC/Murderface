@@ -6,6 +6,8 @@
 <head runat="server">
     <title></title>
 </head>
+    <h1 style="text-align:center">Process a New Transaction</h1>
+    <h4>Update Billing Information for the card number entered. (cannot change name on card or card number)</h4>
 <body>
     <form id="form1" runat="server">
     <div>
@@ -25,7 +27,6 @@
         <asp:TextBox ID="TxtTransAmnt" placeholder="Enter Transaction Amount" runat="server"></asp:TextBox>
           <asp:Button ID="btnHome" runat="server" OnClick="btnHome_Click" Text="Home" />
           <asp:Button ID="btnProcessTransaction" runat="server" Text="Process Transaction" OnClick="btnAddNew_Click" />
-        <asp:Button ID="btnViewInfo" runat="server" Text="View Information" />
         <div> 
           <asp:Label runat="server" ID="txtErrors"></asp:Label>
         </div>

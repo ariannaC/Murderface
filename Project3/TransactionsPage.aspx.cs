@@ -28,14 +28,16 @@ namespace Project3
             fred.ZipCode = TxtZip.Text;
             creditCard.CreditLimit = pxy.GetCreditLimit(fred.Firstname);
             creditCard.AccountBalance = creditCard.CreditLimit - float.Parse(TxtTransAmnt.Text);
-            creditCard.CardNumber = float.Parse(txtCCNum.Text);
+            creditCard.CardNumber = int.Parse(txtCCNum.Text);
             creditCard.CVV = int.Parse(txtCVV.Text);
             stupid[0] = creditCard.CardNumber;
             stupid[1] = creditCard.CVV;
             stupid[2] = float.Parse(TxtTransAmnt.Text);
             stupid[3] = fred.Firstname;
-          txtErrors.Text =  pxy.UpdateCustomer(fred, creditCard, stupid).ToString();
+            string[] blah = pxy.UpdateCustomer(fred, creditCard, stupid);
 
+            txtErrors.Text = blah[2];
+            
         }
 
         protected void btnHome_Click(object sender, EventArgs e)

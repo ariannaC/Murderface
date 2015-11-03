@@ -15,7 +15,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="CCID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="CVV" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CardNumber" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardNumber" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="AccountNumber" type="s:float" />
           <s:element minOccurs="1" maxOccurs="1" name="CreditLimit" type="s:float" />
           <s:element minOccurs="1" maxOccurs="1" name="AccountBalance" type="s:float" />

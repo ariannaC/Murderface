@@ -209,7 +209,7 @@ namespace Project3.CreditCardServiceRef {
         
         private int cVVField;
         
-        private float cardNumberField;
+        private int cardNumberField;
         
         private float accountNumberField;
         
@@ -248,7 +248,7 @@ namespace Project3.CreditCardServiceRef {
         }
         
         /// <remarks/>
-        public float CardNumber {
+        public int CardNumber {
             get {
                 return this.cardNumberField;
             }
